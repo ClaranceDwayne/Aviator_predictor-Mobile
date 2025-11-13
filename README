@@ -1,0 +1,116 @@
+
+`markdown
+
+🎯 Aviator Predictor Bot
+
+A web-based prediction dashboard for the Aviator game. Enter the game URL, launch the bot, and get real-time multiplier predictions before each round starts. Built with FastAPI, Puppeteer, and a lightweight frontend.
+
+---
+
+🚀 Features
+
+- 🔗 Input Aviator game URL to start scraping
+- 🤖 Puppeteer-based bot captures round history via browser automation
+- 🔮 Predict next multiplier using a trained ML model (XGBoost)
+- 📊 Display prediction and confidence score on dashboard
+- 🟢 Live status panel and round history table
+- 🧩 Modular architecture for easy upgrades and stealth enhancements
+
+---
+
+🧱 Tech Stack
+
+| Layer       | Technology         |
+|-------------|--------------------|
+| Frontend    | HTML + JS + Bootstrap |
+| Backend     | FastAPI (Python)   |
+| Scraper     | Puppeteer (Node.js) |
+| Hosting     | Railway.app or Render.com |
+
+---
+
+📁 Folder Structure
+
+`
+aviator-predictor/
+├── backend/
+│   ├── main.py              # FastAPI server
+│   ├── predictor.py         # Prediction logic
+│   ├── scraper.js           # Puppeteer scraper
+│   └── rounds.csv           # Logged round history
+├── frontend/
+│   └── index.html           # Web dashboard
+├── requirements.txt         # Python deps
+├── package.json             # Node deps
+├── Procfile                 # For Railway/Render deployment
+└── README.md                # Setup guide
+`
+
+---
+
+⚙️ Setup Instructions
+
+1. Clone the Repo
+`bash
+git clone https://github.com/yourusername/aviator-predictor.git
+cd aviator-predictor
+`
+
+2. Install Dependencies
+
+Python
+`bash
+pip install -r requirements.txt
+`
+
+Node.js
+`bash
+npm install
+`
+
+3. Run Locally (Optional)
+`bash
+uvicorn backend.main:app --host 0.0.0.0 --port 8000
+`
+
+---
+
+🌐 Deploy on Railway
+
+1. Go to Railway.app
+2. Create a new project → “Deploy from GitHub”
+3. Select your repo
+4. Set build commands:
+   - Python: pip install -r requirements.txt
+   - Node: npm install
+5. Set start command:
+   `bash
+   uvicorn backend.main:app --host 0.0.0.0 --port 8000
+   `
+6. Enable CORS and environment variables if needed
+
+---
+
+🧠 Prediction Logic
+
+Uses XGBoost model trained on historical Aviator rounds.  
+Model retrains automatically using rounds.csv via train_model().
+
+---
+
+📬 API Endpoints
+
+| Endpoint         | Method | Description                     |
+|------------------|--------|---------------------------------|
+| /start-scraper | POST   | Launches Puppeteer with URL     |
+| /predict       | GET    | Returns predicted multiplier    |
+
+---
+
+📄 License
+
+MIT — feel free to fork, modify, and deploy.
+`
+
+---
+
