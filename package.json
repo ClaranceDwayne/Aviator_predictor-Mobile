@@ -1,0 +1,8 @@
+{
+  "name": "aviator-predictor",
+  "version": "1.0.0",
+  "main": "backend/scraper.js",
+  "dependencies": {
+    "puppeteer": "^21.0.0"
+  }
+}
