@@ -5,6 +5,8 @@ const path = require("path");
 
 (async () => {
   const url = process.argv[2];
+  const timeout = parseInt(process.env.SCRAPPER_TIMEOUT || "10000");
+
   const browser = await puppeteer.launch({ headless: true });
   const page = await browser.newPage();
   await page.goto(url, { waitUntil: "networkidle2" });
@@ -25,7 +27,7 @@ const path = require("path");
       // Optional: Send to FastAPI backend
       /*
       try {
-        await axios.post("http://localhost:8000/receive-data", { data });
+        await axios.post("https://valiant-victory.up.railway.app/receive-data", { data });
       } catch (err) {
         console.error("Failed to send to backend:", err.message);
       }
@@ -33,9 +35,9 @@ const path = require("path");
     }
   });
 
-  // Graceful shutdown after 10 seconds
+  // Graceful shutdown after timeout
   setTimeout(async () => {
     await browser.close();
     console.log("Browser closed after timeout.");
-  }, 10000);
+  }, timeout);
 })();
